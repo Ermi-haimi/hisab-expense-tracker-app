@@ -7,48 +7,51 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Hello, Ermias',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight(600),
-              ),
-            ),
-            Text(
-              'Track your expenses wisely',
-              style: TextStyle(
-                fontSize: 15,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 10),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.add),
-              iconSize: 30,
-              style: IconButton.styleFrom(
-                backgroundColor: Color(0xff4f39f6),
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-            ),
-          ),
-        ],
-        toolbarHeight: 120,
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
+          padding: EdgeInsets.all(10),
           child: Column(
             children: [
+              Container(
+                padding: EdgeInsets.only(top: 20),
+                height: 120,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hello, Ermias',
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight(600),
+                          ),
+                        ),
+                        Text(
+                          'Track your expenses wisely',
+                          style: TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.add),
+                      iconSize: 30,
+                      style: IconButton.styleFrom(
+                        backgroundColor: Color(0xff4f39f6),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Container(
                 padding: EdgeInsets.all(10),
                 margin: EdgeInsets.all(10),
@@ -88,8 +91,8 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            color: Color.fromRGBO(255, 255, 255, 0.2),
-                            borderRadius: BorderRadius.circular(20),
+                            color: Color.fromRGBO(255, 255, 255, 0.1),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           padding: EdgeInsets.symmetric(
                             vertical: 10,
