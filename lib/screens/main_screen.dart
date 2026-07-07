@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hisab/screens/home_screen.dart';
 import 'package:hisab/screens/new_expense_screen.dart';
-import 'package:hisab/screens/search_screen.dart';
+import 'package:hisab/screens/expenses_screen.dart';
 import 'package:hisab/screens/setting_screen.dart';
 import 'package:hisab/screens/statistics_screen.dart';
 
@@ -17,15 +17,16 @@ class _MainScreenState extends State<MainScreen> {
 
   final List _screens = [
     HomeScreen(),
-    NewExpenseScreen(),
+    // NewExpenseScreen(),
     StatisticsScreen(),
-    SearchScreen(),
+    ExpensesScreen(),
     SettingScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF9FAFB),
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
@@ -52,19 +53,6 @@ class _MainScreenState extends State<MainScreen> {
             selectedIcon: Icon(
               size: 45,
               Icons.home_filled,
-              color: Color(0xFF4F39F6),
-            ),
-          ),
-          NavigationDestination(
-            label: 'Add',
-            icon: Icon(
-              size: 30,
-              Icons.add,
-              color: Colors.grey,
-            ),
-            selectedIcon: Icon(
-              size: 35,
-              Icons.add,
               color: Color(0xFF4F39F6),
             ),
           ),
