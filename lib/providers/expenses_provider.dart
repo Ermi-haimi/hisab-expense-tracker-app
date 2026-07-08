@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:hisab/expenses_model.dart';
+import 'package:hisab/models/expense.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class ExpensesProvider extends ChangeNotifier {
-  final List<Expense> _expenses = [];
+  final Box<Expense> _box = Hive.box<Expense>('expenses');
 
-  List<Expense> get expenses => List.unmodifiable(_expenses);
+  List<Expense> get expenses => _box.values.toList();
 
-  void addExpense(Expense expense) {
-    _expenses.add(expense);
+  Future<void> addExpense(Expense expense) async {
+    await _box.add(expense);
     notifyListeners();
   }
 
-  void removeExpense(Expense expense) {
-    _expenses.remove(expense);
+  Future<void> removeExpense(int index) async {
+    await _box.deleteAt(index);
     notifyListeners();
   }
 }
