@@ -7,14 +7,30 @@ class ExpensesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoriteJokes = context.watch<ExpensesProvider>().expenses;
+    final expensesList = context.watch<ExpensesProvider>().filteredExpenses;
     return Column(
       children: [
+        SizedBox(
+          height: 50,
+        ),
+        Container(
+          padding: EdgeInsets.all(10),
+          child: TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Search',
+              prefixIcon: Icon(Icons.search),
+            ),
+            onChanged: (value) {
+              context.read<ExpensesProvider>().setSearchQuery(value);
+            },
+          ),
+        ),
         Expanded(
           child: ListView.builder(
-            itemCount: favoriteJokes.length,
+            itemCount: expensesList.length,
             itemBuilder: (context, index) {
-              final item = favoriteJokes[index];
+              final item = expensesList[index];
               return Card(
                 color: Colors.white,
                 child: Container(

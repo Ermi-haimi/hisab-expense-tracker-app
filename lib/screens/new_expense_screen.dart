@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../expenses_model.dart';
+import '../models/expense.dart';
 import '../providers/expenses_provider.dart';
 
 class NewExpenseScreen extends StatefulWidget {
@@ -314,7 +314,7 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'DateNote (Optional)',
+                        'Note (Optional)',
                         style: TextStyle(
                           fontWeight: FontWeight(600),
                           fontSize: 20,
