@@ -14,6 +14,7 @@ class ExpensesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  //search function
   List<Expense> get filteredExpenses {
     return expenses.where((expense) {
       return expense.name.toLowerCase().contains(_searchQuery.toLowerCase()) ||
@@ -31,5 +32,71 @@ class ExpensesProvider extends ChangeNotifier {
   Future<void> removeExpense(int index) async {
     await _box.deleteAt(index);
     notifyListeners();
+  }
+
+  //Statistics
+
+  int get totalExpenses => expenses.length;
+
+  double get totalSpent {
+    return expenses.fold(0, (sum, expense) => sum + expense.amount);
+  }
+
+  //spending by categories
+  Map<String, double> get spendingByCategory {
+    final Map<String, double> data = {};
+
+    for (final expense in expenses) {
+      data.update(
+        expense.category,
+        (value) => value + expense.amount,
+        ifAbsent: () => expense.amount,
+      );
+    }
+
+    return data;
+  }
+
+  //highest amount category
+  String get highestCategory {
+    final map = spendingByCategory;
+
+    if (map.isEmpty) return "";
+
+    return map.entries
+        .reduce(
+          (a, b) => a.value > b.value ? a : b,
+        )
+        .key;
+  }
+
+  //average spending
+  double get averageExpense {
+    if (expenses.isEmpty) return 0;
+
+    return totalSpent / expenses.length;
+  }
+
+  // current month spending
+  double get currentMonthSpent {
+    final now = DateTime.now();
+
+    return expenses
+        .where((e) => e.date.year == now.year && e.date.month == now.month)
+        .fold(0, (sum, e) => sum + e.amount);
+  }
+
+  //today spending
+  double get todaySpent {
+    final now = DateTime.now();
+
+    return expenses
+        .where(
+          (e) =>
+              e.date.year == now.year &&
+              e.date.month == now.month &&
+              e.date.day == now.day,
+        )
+        .fold(0, (sum, e) => sum + e.amount);
   }
 }
