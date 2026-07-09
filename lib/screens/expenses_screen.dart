@@ -33,51 +33,94 @@ class ExpensesScreen extends StatelessWidget {
               final item = expensesList[index];
               return Card(
                 color: Colors.white,
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                child: Stack(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 40,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
 
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    item.name,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight(700),
+                                      color: Color(0xFF4F39F6),
+                                    ),
+                                    textAlign: TextAlign.start,
+                                  ),
+                                  Text(
+                                    item.category,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight(300),
+                                    ),
+                                  ),
+                                  // SizedBox(
+                                  //   height: 5,
+                                  // ),
+                                  Text(
+                                    '${item.date.day} / ${item.date.month} / ${item.date.year}',
+                                  ),
+                                ],
+                              ),
                               Text(
-                                item.name,
+                                '\$${item.amount.toString()}',
                                 style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight(700),
-                                  color: Color(0xFF4F39F6),
+                                  fontSize: 25,
+                                  fontWeight: FontWeight(600),
                                 ),
-                                textAlign: TextAlign.start,
-                              ),
-                              Text(
-                                item.category,
-                                style: TextStyle(fontWeight: FontWeight(300)),
-                              ),
-                              // SizedBox(
-                              //   height: 5,
-                              // ),
-                              Text(
-                                '${item.date.day} / ${item.date.month} / ${item.date.year}',
                               ),
                             ],
                           ),
-                          Text(
-                            '\$${item.amount.toString()}',
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight(600),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      right: 0,
+                      top: -5,
+                      child: PopupMenuButton<String>(
+                        onSelected: (value) {
+                          if (value == 'delete') {
+                            context.read<ExpensesProvider>().removeExpense(
+                              index,
+                            );
+                          }
+                        },
+                        color: Colors.white,
+                        itemBuilder: (context) => [
+                          PopupMenuItem(
+                            value: 'delete',
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.delete_outline,
+                                  color: Color(0xFF4F39F6),
+                                ),
+                                SizedBox(width: 8),
+                                Text(
+                                  'Delete',
+                                  style: TextStyle(
+                                    color: Color(0xFF4F39F6),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               );
             },
