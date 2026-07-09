@@ -1,12 +1,20 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hisab/constants.dart';
 import 'package:hisab/screens/new_expense_screen.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/expenses_provider.dart';
+import '../widgets/statistics.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<ExpensesProvider>();
+
     return SafeArea(
       child: SingleChildScrollView(
         padding: EdgeInsets.all(10),
@@ -139,6 +147,12 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ],
+              ),
+            ),
+            SizedBox(
+              height: 300,
+              child: CategoryPieChart(
+                categoryData: provider.spendingByCategory,
               ),
             ),
           ],

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:hisab/providers/expenses_provider.dart';
 
+import '../widgets/statistics.dart';
+
 class StatisticsScreen extends StatelessWidget {
   const StatisticsScreen({super.key});
 
@@ -18,87 +20,11 @@ class StatisticsScreen extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.all(19),
-              child: Column(
-                spacing: 10,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Food'),
-                      Text(
-                        categorySpending['Food'] == null
-                            ? '0'
-                            : categorySpending['Food'].toString(),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Transport'),
-                      Text(
-                        categorySpending['Transport'] == null
-                            ? '0'
-                            : categorySpending['Transport'].toString(),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Entertainment'),
-                      Text(
-                        categorySpending['Entertainment'] == null
-                            ? '0'
-                            : categorySpending['Entertainment'].toString(),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Bills'),
-                      Text(
-                        categorySpending['Bills'] == null
-                            ? '0'
-                            : categorySpending['Bills'].toString(),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Health'),
-                      Text(
-                        categorySpending['Health'] == null
-                            ? '0'
-                            : categorySpending['Health'].toString(),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Shopping'),
-                      Text(
-                        categorySpending['Shopping'] == null
-                            ? '0'
-                            : categorySpending['Shopping'].toString(),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Other'),
-                      Text(
-                        categorySpending['Other'] == null
-                            ? '0'
-                            : categorySpending['Other'].toString(),
-                      ),
-                    ],
-                  ),
-                ],
+              child: SizedBox(
+                height: 300,
+                child: CategoryPieChart(
+                  categoryData: provider.spendingByCategory,
+                ),
               ),
             ),
             Column(
