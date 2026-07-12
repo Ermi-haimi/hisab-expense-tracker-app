@@ -17,54 +17,84 @@ class SettingScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              color: Colors.blue,
+              padding: EdgeInsets.all(15),
+              // width: 170,
               child: Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.settings),
-                  Text('Setting'),
-                ],
-              ),
-            ),
-            Card(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Monthly budget'),
-                  Row(
-                    children: [
-                      Text(
-                        settingProvider.monthlyBudget.toStringAsFixed(1),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          showBudgetDialog(context);
-                        },
-                        child: Text('Edit'),
-                      ),
-                    ],
+                  Icon(
+                    Icons.settings,
+                    size: 30,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    'Setting',
+                    style: TextStyle(
+                      fontWeight: FontWeight(600),
+                      fontSize: 30,
+                    ),
                   ),
                 ],
               ),
             ),
             Card(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Name'),
-                  Row(
-                    children: [
-                      Text(
-                        settingProvider.userName,
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          showNameDialog(context);
-                        },
-                        child: Text('Edit'),
-                      ),
-                    ],
-                  ),
-                ],
+              child: Container(
+                padding: EdgeInsets.all(8.0),
+                color: Colors.white,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Monthly budget',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          settingProvider.monthlyBudget.toStringAsFixed(1),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            showBudgetDialog(context);
+                          },
+                          child: Text('Edit'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Card(
+              child: Container(
+                color: Colors.white,
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Name',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          settingProvider.userName,
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            showNameDialog(context);
+                          },
+                          child: Text('Edit'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
