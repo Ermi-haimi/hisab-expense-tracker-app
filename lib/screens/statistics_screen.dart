@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:hisab/providers/expenses_provider.dart';
 
-import '../widgets/statistics.dart';
+import '../widgets/statistics_piechart.dart';
 
 class StatisticsScreen extends StatelessWidget {
   const StatisticsScreen({super.key});

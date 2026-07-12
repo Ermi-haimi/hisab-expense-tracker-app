@@ -17,7 +17,6 @@ class _MainScreenState extends State<MainScreen> {
 
   final List _screens = [
     HomeScreen(),
-    // NewExpenseScreen(),
     StatisticsScreen(),
     ExpensesScreen(),
     SettingScreen(),
@@ -29,6 +28,7 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: Color(0xFFF9FAFB),
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavigationBar(
+        labelPadding: EdgeInsets.all(10),
         selectedIndex: _selectedIndex,
         onDestinationSelected: (index) {
           setState(() {

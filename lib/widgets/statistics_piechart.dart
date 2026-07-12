@@ -41,7 +41,7 @@ class CategoryPieChart extends StatelessWidget {
         value: entry.value,
         title: "${((entry.value / total) * 100).toStringAsFixed(0)}%",
         radius: 90,
-        titleStyle: const TextStyle(
+        titleStyle: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
           fontSize: 20,

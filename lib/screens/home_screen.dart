@@ -1,19 +1,19 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hisab/constants.dart';
 import 'package:hisab/screens/new_expense_screen.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/expenses_provider.dart';
-import '../widgets/statistics.dart';
+import '../providers/setting_provider.dart';
+import '../widgets/statistics_piechart.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.watch<ExpensesProvider>();
+    final expenseProvider = context.watch<ExpensesProvider>();
+    final settingProvider = context.watch<SettingProvider>();
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Hello, Ermias',
+                        'Hello, ${settingProvider.userName}',
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight(600),
@@ -95,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                             style: kSmallTextStyle,
                           ),
                           Text(
-                            '\$2,847',
+                            '\$${expenseProvider.currentMonthSpent}',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 40,
@@ -124,20 +124,29 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Budget: \$3,500.',
+                        'Budget: \$${settingProvider.monthlyBudget}.',
                         style: kSmallTextStyle,
                       ),
                       Text(
-                        'Remaining: \$653',
+                        'Remaining: \$${settingProvider.monthlyBudget - expenseProvider.currentMonthSpent}',
                         style: kSmallTextStyle,
                       ),
                     ],
+                  ),
+                  LinearProgressIndicator(
+                    value:
+                        (expenseProvider.currentMonthSpent /
+                                settingProvider.monthlyBudget)
+                            .clamp(0.0, 1.0),
+                    borderRadius: BorderRadius.circular(20),
+                    minHeight: 10,
+                    color: Color(0xff7d05da),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '81.3% Used.',
+                        '${(expenseProvider.currentMonthSpent / settingProvider.monthlyBudget) * 100}% Used.',
                         style: kSmallTextStyle,
                       ),
                       Text(
@@ -152,7 +161,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 300,
               child: CategoryPieChart(
-                categoryData: provider.spendingByCategory,
+                categoryData: expenseProvider.spendingByCategory,
               ),
             ),
           ],
