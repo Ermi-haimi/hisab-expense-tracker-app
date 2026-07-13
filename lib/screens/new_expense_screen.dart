@@ -47,6 +47,19 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
 
   void _saveExpense() {
     if (!_formKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: Duration(seconds: 1),
+          content: Text(
+            'Please Enter Both Amount and Name',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight(700),
+            ),
+          ),
+          backgroundColor: Colors.redAccent,
+        ),
+      );
       return;
     }
     final expense = Expense(
@@ -60,6 +73,19 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
     );
 
     context.read<ExpensesProvider>().addExpense(expense);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text(
+          'Expense Successfully Added',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight(700),
+          ),
+        ),
+        backgroundColor: Colors.green,
+      ),
+    );
   }
 
   @override
