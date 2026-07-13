@@ -9,3 +9,17 @@ final kGreySmallTextStyle = TextStyle(
   color: Colors.grey[600],
   fontSize: 15,
 );
+
+final kMediumBoldText = TextStyle(
+  fontWeight: FontWeight(600),
+  fontSize: 20,
+);
+
+final kInputConBoxDecoration = BoxDecoration(
+  color: Colors.white,
+  borderRadius: BorderRadius.circular(15),
+  border: Border.all(
+    color: Color.fromRGBO(158, 158, 158, 0.5),
+    width: 1,
+  ),
+);

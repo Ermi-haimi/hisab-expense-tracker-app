@@ -14,6 +14,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final expenseProvider = context.watch<ExpensesProvider>();
     final settingProvider = context.watch<SettingProvider>();
+    final double budget = settingProvider.monthlyBudget;
+    final double currentMonthSpending = expenseProvider.currentMonthSpent;
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -95,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                             style: kSmallTextStyle,
                           ),
                           Text(
-                            '\$${expenseProvider.currentMonthSpent}',
+                            '\$$currentMonthSpending',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 40,
@@ -124,29 +126,28 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Budget: \$${settingProvider.monthlyBudget}.',
+                        'Budget: \$$budget.',
                         style: kSmallTextStyle,
                       ),
                       Text(
-                        'Remaining: \$${settingProvider.monthlyBudget - expenseProvider.currentMonthSpent}',
+                        'Remaining: \$${budget - currentMonthSpending}',
                         style: kSmallTextStyle,
                       ),
                     ],
                   ),
                   LinearProgressIndicator(
-                    value:
-                        (expenseProvider.currentMonthSpent /
-                                settingProvider.monthlyBudget)
-                            .clamp(0.0, 1.0),
+                    value: (currentMonthSpending / budget).clamp(0.0, 1.0),
                     borderRadius: BorderRadius.circular(20),
                     minHeight: 10,
-                    color: Color(0xff7d05da),
+                    color: currentMonthSpending / budget <= 0.5
+                        ? Colors.green[900]
+                        : Colors.red[900],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '${(expenseProvider.currentMonthSpent / settingProvider.monthlyBudget) * 100}% Used.',
+                        '${((budget > 0 ? currentMonthSpending / budget : 1) * 100).toStringAsFixed(0)}% Used.',
                         style: kSmallTextStyle,
                       ),
                       Text(

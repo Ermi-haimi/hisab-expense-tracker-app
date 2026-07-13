@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hisab/constants.dart';
 import 'package:provider/provider.dart';
 
 import '../models/expense.dart';
@@ -111,23 +112,13 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
               children: [
                 Container(
                   padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(
-                      color: Color.fromRGBO(158, 158, 158, 0.5),
-                      width: 1,
-                    ),
-                  ),
+                  decoration: kInputConBoxDecoration,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Amount*',
-                        style: TextStyle(
-                          fontWeight: FontWeight(600),
-                          fontSize: 20,
-                        ),
+                        style: kMediumBoldText,
                       ),
                       SizedBox(
                         height: 10,
@@ -169,23 +160,13 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
                 ),
                 Container(
                   padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(
-                      color: Color.fromRGBO(158, 158, 158, 0.5),
-                      width: 1,
-                    ),
-                  ),
+                  decoration: kInputConBoxDecoration,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Description*',
-                        style: TextStyle(
-                          fontWeight: FontWeight(600),
-                          fontSize: 20,
-                        ),
+                        style: kMediumBoldText,
                       ),
                       SizedBox(
                         height: 10,
@@ -220,23 +201,13 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
                 ),
                 Container(
                   padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(
-                      color: Color.fromRGBO(158, 158, 158, 0.5),
-                      width: 1,
-                    ),
-                  ),
+                  decoration: kInputConBoxDecoration,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Category*',
-                        style: TextStyle(
-                          fontWeight: FontWeight(600),
-                          fontSize: 20,
-                        ),
+                        style: kMediumBoldText,
                       ),
                       SizedBox(
                         height: 10,
@@ -293,23 +264,13 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
                 Container(
                   padding: EdgeInsets.all(20),
                   width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(
-                      color: Color.fromRGBO(158, 158, 158, 0.5),
-                      width: 1,
-                    ),
-                  ),
+                  decoration: kInputConBoxDecoration,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Date',
-                        style: TextStyle(
-                          fontWeight: FontWeight(600),
-                          fontSize: 20,
-                        ),
+                        style: kMediumBoldText,
                       ),
                       SizedBox(height: 8),
                       OutlinedButton.icon(
@@ -328,23 +289,13 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
                 Container(
                   padding: EdgeInsets.all(20),
                   width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(
-                      color: Color.fromRGBO(158, 158, 158, 0.5),
-                      width: 1,
-                    ),
-                  ),
+                  decoration: kInputConBoxDecoration,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Note (Optional)',
-                        style: TextStyle(
-                          fontWeight: FontWeight(600),
-                          fontSize: 20,
-                        ),
+                        style: kMediumBoldText,
                       ),
                       SizedBox(
                         height: 10,
