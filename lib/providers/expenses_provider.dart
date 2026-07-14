@@ -99,4 +99,12 @@ class ExpensesProvider extends ChangeNotifier {
         )
         .fold(0, (sum, e) => sum + e.amount);
   }
+
+  List<Expense> get recentExpenses {
+    final sortedExpenses = List<Expense>.from(expenses);
+
+    sortedExpenses.sort((a, b) => b.date.compareTo(a.date));
+
+    return sortedExpenses.take(5).toList();
+  }
 }
