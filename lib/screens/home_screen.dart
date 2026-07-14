@@ -10,12 +10,21 @@ import '../widgets/statistics_piechart.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  int daysLeftInMonth() {
+    final now = DateTime.now();
+    final firstDayNextMonth = DateTime(now.year, now.month + 1, 1);
+
+    return firstDayNextMonth.difference(now).inDays;
+  }
+
   @override
   Widget build(BuildContext context) {
     final expenseProvider = context.watch<ExpensesProvider>();
     final settingProvider = context.watch<SettingProvider>();
     final double budget = settingProvider.monthlyBudget;
     final double currentMonthSpending = expenseProvider.currentMonthSpent;
+
+    int daysLeft = daysLeftInMonth();
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -151,7 +160,7 @@ class HomeScreen extends StatelessWidget {
                         style: kSmallTextStyle,
                       ),
                       Text(
-                        '9 days left',
+                        '$daysLeft days left',
                         style: kSmallTextStyle,
                       ),
                     ],
