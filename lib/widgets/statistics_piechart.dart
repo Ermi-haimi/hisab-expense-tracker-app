@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:hisab/constants.dart';
 
 class CategoryPieChart extends StatelessWidget {
   final Map<String, double> categoryData;
@@ -21,25 +22,15 @@ class CategoryPieChart extends StatelessWidget {
   }
 
   List<PieChartSectionData> _buildSections() {
-    final colors = [
-      Colors.blue,
-      Colors.green,
-      Colors.orange,
-      Colors.red,
-      Colors.purple,
-      Colors.teal,
-      Colors.brown,
-    ];
-
     int index = 0;
 
     return categoryData.entries.map((entry) {
       final total = categoryData.values.fold(0.0, (sum, item) => sum + item);
 
       final section = PieChartSectionData(
-        color: colors[index % colors.length],
+        color: categoryColors[entry.key],
         value: entry.value,
-        title: "${((entry.value / total) * 100).toStringAsFixed(0)}%",
+        title: "${((entry.value / total) * 100).toStringAsFixed(0)}% ",
         radius: 90,
         titleStyle: TextStyle(
           color: Colors.white,

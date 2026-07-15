@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hisab/constants.dart';
 import 'package:hisab/screens/new_expense_screen.dart';
+import 'package:hisab/widgets/legend_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/expenses_provider.dart';
@@ -28,12 +29,14 @@ class HomeScreen extends StatelessWidget {
 
     final recentExpenses = expenseProvider.recentExpenses;
 
+    print(categoryColors.keys);
+
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 20),
+              padding: EdgeInsets.all(20),
               height: 120,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,6 +181,8 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
+
+            LegendWidget(),
             Column(
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -190,6 +195,7 @@ class HomeScreen extends StatelessWidget {
                     style: kMediumBoldText,
                   ),
                 ),
+
                 ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
@@ -223,7 +229,8 @@ class HomeScreen extends StatelessWidget {
                                           style: TextStyle(
                                             fontSize: 17,
                                             fontWeight: FontWeight(700),
-                                            color: Color(0xFF4F39F6),
+                                            color:
+                                                categoryColors[item.category],
                                           ),
                                           textAlign: TextAlign.start,
                                         ),

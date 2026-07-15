@@ -23,3 +23,13 @@ final kInputConBoxDecoration = BoxDecoration(
     width: 1,
   ),
 );
+
+const Map<String, Color> categoryColors = {
+  'Food': Colors.red,
+  'Transport': Colors.green,
+  'Bills': Colors.orange,
+  'Entertainment': Colors.purple,
+  'Health': Colors.brown,
+  'Shopping': Colors.blue,
+  'Other': Colors.grey,
+};

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hisab/constants.dart';
 import 'package:hisab/providers/expenses_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -33,6 +34,7 @@ class ExpensesScreen extends StatelessWidget {
               final item = expensesList[index];
               return Card(
                 color: Colors.white,
+
                 child: Stack(
                   children: [
                     Container(
@@ -56,7 +58,7 @@ class ExpensesScreen extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight(700),
-                                      color: Color(0xFF4F39F6),
+                                      color: categoryColors[item.category],
                                     ),
                                     textAlign: TextAlign.start,
                                   ),

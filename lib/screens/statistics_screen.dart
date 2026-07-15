@@ -21,6 +21,28 @@ class StatisticsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+              padding: EdgeInsets.all(15),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.auto_graph_outlined,
+                    size: 30,
+                    color: Color(0xFF4F39F6),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    'Statistics',
+                    style: TextStyle(
+                      fontWeight: FontWeight(600),
+                      fontSize: 30,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
               padding: EdgeInsets.all(19),
               child: SizedBox(
                 height: 300,
