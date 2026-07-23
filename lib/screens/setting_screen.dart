@@ -56,22 +56,38 @@ class SettingScreen extends StatelessWidget {
               value: settingProvider.userName,
             ),
 
-            Switch(
-              value: theme == ThemeMode.dark,
-              thumbIcon: WidgetStateProperty.resolveWith<Icon?>(
-                (Set<WidgetState> states) {
-                  return theme == ThemeMode.dark
-                      ? Icon(
-                          Icons.dark_mode,
-                          color: Colors.orange,
-                        )
-                      : Icon(Icons.light_mode);
-                },
-              ),
+            Card(
+              child: Container(
+                padding: EdgeInsetsGeometry.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Theme',
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                    Switch(
+                      value: theme == ThemeMode.dark,
+                      thumbIcon: WidgetStateProperty.resolveWith<Icon?>(
+                        (Set<WidgetState> states) {
+                          return theme == ThemeMode.dark
+                              ? Icon(
+                                  Icons.dark_mode,
+                                  color: Colors.orange,
+                                )
+                              : Icon(Icons.light_mode);
+                        },
+                      ),
 
-              onChanged: (value) {
-                context.read<SettingProvider>().toggleTheme();
-              },
+                      onChanged: (value) {
+                        context.read<SettingProvider>().toggleTheme();
+                      },
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

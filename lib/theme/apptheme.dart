@@ -21,6 +21,11 @@ class AppTheme {
         fontWeight: FontWeight(600),
         color: Colors.black,
       ),
+      labelMedium: TextStyle(
+        fontSize: 15,
+        fontWeight: FontWeight(500),
+        color: Colors.black,
+      ),
     ),
     navigationBarTheme: NavigationBarThemeData(
       backgroundColor: Colors.white38,
@@ -46,6 +51,11 @@ class AppTheme {
       titleLarge: TextStyle(
         fontSize: 30,
         fontWeight: FontWeight(600),
+        color: Colors.white,
+      ),
+      labelMedium: TextStyle(
+        fontSize: 15,
+        fontWeight: FontWeight(500),
         color: Colors.white,
       ),
     ),

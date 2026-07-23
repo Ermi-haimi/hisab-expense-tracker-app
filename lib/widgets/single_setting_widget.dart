@@ -21,7 +21,6 @@ class SettingWidget extends StatelessWidget {
     return Card(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
         padding: EdgeInsets.all(15),
@@ -37,7 +36,7 @@ class SettingWidget extends StatelessWidget {
               children: [
                 Text(
                   value,
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight(500)),
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
                 TextButton(
                   onPressed: () {
