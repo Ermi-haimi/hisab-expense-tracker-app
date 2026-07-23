@@ -47,10 +47,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Hello, ${settingProvider.userName}',
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight(600),
-                        ),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       Text(
                         'Track your expenses wisely',
@@ -203,7 +200,6 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final item = recentExpenses[index];
                     return Card(
-                      color: Colors.white,
                       child: Stack(
                         children: [
                           Container(
@@ -213,8 +209,6 @@ class HomeScreen extends StatelessWidget {
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
                                   mainAxisAlignment:
@@ -236,13 +230,10 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                         Text(
                                           item.category,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight(300),
-                                          ),
+                                          style: Theme.of(
+                                            context,
+                                          ).textTheme.bodyMedium,
                                         ),
-                                        // SizedBox(
-                                        //   height: 5,
-                                        // ),
                                         Text(
                                           '${item.date.day} / ${item.date.month} / ${item.date.year}',
                                         ),
@@ -250,10 +241,9 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     Text(
                                       '\$${item.amount.toString()}',
-                                      style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight(600),
-                                      ),
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.labelLarge,
                                     ),
                                   ],
                                 ),

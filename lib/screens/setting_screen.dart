@@ -4,6 +4,7 @@ import 'package:hisab/widgets/name_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:hisab/constants.dart';
 
+import '../main.dart';
 import '../widgets/budget_dialog.dart';
 import '../widgets/single_setting_widget.dart';
 
@@ -13,6 +14,8 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settingProvider = context.watch<SettingProvider>();
+    ThemeMode theme = settingProvider.themeMode;
+
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -51,6 +54,24 @@ class SettingScreen extends StatelessWidget {
               settingName: 'Name',
               dialog: showNameDialog,
               value: settingProvider.userName,
+            ),
+
+            Switch(
+              value: theme == ThemeMode.dark,
+              thumbIcon: WidgetStateProperty.resolveWith<Icon?>(
+                (Set<WidgetState> states) {
+                  return theme == ThemeMode.dark
+                      ? Icon(
+                          Icons.dark_mode,
+                          color: Colors.orange,
+                        )
+                      : Icon(Icons.light_mode);
+                },
+              ),
+
+              onChanged: (value) {
+                context.read<SettingProvider>().toggleTheme();
+              },
             ),
           ],
         ),

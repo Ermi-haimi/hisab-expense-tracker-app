@@ -25,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF9FAFB),
+      // backgroundColor: Color(0xFFF9FAFB),
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavigationBar(
         labelPadding: EdgeInsets.all(10),
@@ -38,8 +38,8 @@ class _MainScreenState extends State<MainScreen> {
         indicatorShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        indicatorColor: Color.fromRGBO(79, 57, 246, 0.2),
-        backgroundColor: Colors.white,
+        indicatorColor: Theme.of(context).navigationBarTheme.indicatorColor,
+        backgroundColor: Theme.of(context).navigationBarTheme.backgroundColor,
         height: 80,
 
         destinations: [

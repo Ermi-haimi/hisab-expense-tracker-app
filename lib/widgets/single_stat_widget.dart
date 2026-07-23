@@ -20,7 +20,6 @@ class SingleStatWidget extends StatelessWidget {
         padding: EdgeInsets.all(13),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(

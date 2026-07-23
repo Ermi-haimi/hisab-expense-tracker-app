@@ -92,7 +92,7 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF9FAFB),
+      // backgroundColor: Color(0xFFF9FAFB),
       appBar: AppBar(
         title: Text(
           'Add Expenses',

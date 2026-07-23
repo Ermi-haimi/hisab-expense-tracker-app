@@ -33,8 +33,7 @@ class ExpensesScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               final item = expensesList[index];
               return Card(
-                color: Colors.white,
-
+                // color: Colors.white,
                 child: Stack(
                   children: [
                     Container(
@@ -64,24 +63,21 @@ class ExpensesScreen extends StatelessWidget {
                                   ),
                                   Text(
                                     item.category,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight(300),
-                                    ),
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.bodyMedium,
                                   ),
-                                  // SizedBox(
-                                  //   height: 5,
-                                  // ),
                                   Text(
                                     '${item.date.day} / ${item.date.month} / ${item.date.year}',
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.bodyMedium,
                                   ),
                                 ],
                               ),
                               Text(
                                 '\$${item.amount.toString()}',
-                                style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight(600),
-                                ),
+                                style: Theme.of(context).textTheme.labelLarge,
                               ),
                             ],
                           ),
