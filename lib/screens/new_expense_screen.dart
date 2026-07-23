@@ -92,16 +92,11 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Color(0xFFF9FAFB),
       appBar: AppBar(
         title: Text(
           'Add Expenses',
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight(600),
-          ),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
-        backgroundColor: Colors.white,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -231,6 +226,9 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
                               label: Center(
                                 child: Text(
                                   category,
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.titleMedium,
                                 ),
                               ),
 
@@ -240,8 +238,8 @@ class _NewExpenseScreenState extends State<NewExpenseScreen> {
                                   selectedCategory = category;
                                 });
                               },
-                              selectedColor: Color.fromRGBO(239, 246, 255, 0.5),
-                              backgroundColor: Colors.white,
+                              // selectedColor: Color.fromRGBO(239, 246, 255, 0.5),
+                              // backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                                 side: BorderSide(
